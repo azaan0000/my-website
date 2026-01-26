@@ -1,35 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact Us – Wildlife Care Hub</title>
-  <meta name="description" content="Contact Wildlife Care Hub for questions, suggestions, or feedback about animal and wildlife care information.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Contact · InspireSphere</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* ===== Global Styles ===== */
+:root{
+  --accent:#38bdf8;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --bg:radial-gradient(circle at top left,#1e293b 0,#020617 60%,#000 100%);
+  --card:rgba(15,23,42,.95);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+a{color:#7dd3fc;text-decoration:none}
+
+/* ===== Layout ===== */
+.container{max-width:980px;margin:auto;padding:1.5rem}
+header{border-bottom:1px solid rgba(148,163,184,.25);margin-bottom:1.5rem}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.logo{font-weight:700;font-size:1.1rem}
+nav a{
+  margin-left:.8rem;
+  color:var(--muted);
+}
+nav a.active{color:#fff}
+
+/* ===== Card ===== */
+.card{
+  background:var(--card);
+  border:1px solid rgba(148,163,184,.3);
+  border-radius:18px;
+  padding:1.4rem;
+  box-shadow:0 18px 45px rgba(0,0,0,.6);
+}
+h1{margin-bottom:.3rem}
+.subtitle{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+
+/* ===== Form ===== */
+form{margin-top:1rem}
+.field{margin-bottom:.9rem}
+label{font-size:.85rem;color:var(--muted)}
+input,textarea{
+  width:100%;
+  margin-top:.25rem;
+  padding:.55rem .7rem;
+  background:#020617;
+  border:1px solid rgba(148,163,184,.5);
+  border-radius:12px;
+  color:#fff;
+  font-size:.9rem;
+}
+textarea{min-height:120px}
+button{
+  margin-top:.6rem;
+  padding:.6rem 1.2rem;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#38bdf8,#22c55e);
+  color:#020617;
+  font-weight:600;
+  cursor:pointer;
+}
+#status{margin-top:.6rem;font-size:.85rem}
+
+/* ===== Footer ===== */
+footer{
+  margin-top:2rem;
+  font-size:.8rem;
+  color:var(--muted);
+  text-align:center;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h1>Contact Us</h1>
+<header class="container">
+  <div class="nav">
+    <div class="logo">AZ InspireSphere</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
 </header>
 
-<main>
-  <p>If you have any questions, suggestions, or feedback, feel free to contact us.</p>
+<main class="container">
+  <div class="card">
+    <h1>Contact Me</h1>
+    <p class="subtitle">Have a question, idea, or collaboration? Send a message below.</p>
 
-  <p><strong>Email:</strong>  
-    <a href="mailto:azaanbk29@gmail.com">contact@wildlifecarehub.com</a>
-  </p>
+    <!-- 🔴 REPLACE action URL WITH YOUR FORMSPREE LINK -->
+    <form action="https://formspree.io/f/abcdwxyz" method="POST" id="contactForm">
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" name="name" required>
+      </div>
 
-  <p>We usually respond within 24–48 hours.</p>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="field">
+        <label>Phone / WhatsApp</label>
+        <input type="tel" name="phone">
+      </div>
+
+      <div class="field">
+        <label>Your Message</label>
+        <textarea name="message" required></textarea>
+      </div>
+
+      <button type="submit">Send Message</button>
+      <div id="status"></div>
+    </form>
+
+    <p style="margin-top:1rem;font-size:.85rem;color:var(--muted)">
+      Direct contact:<br>
+      Email: <a href="mailto:azaanbk29@gmail.com">azaanbk29@gmail.com</a><br>
+      WhatsApp: <a href="tel:+923705840165">+92 370 5840165</a>
+    </p>
+  </div>
 </main>
 
 <footer>
-  <a href="index.html">Home</a> |
-  <a href="about.html">About</a> |
-  <a href="privacy.html">Privacy Policy</a> |
-  <a href="contact.html">Contact</a>
-  <p>© 2025 Wildlife Care Hub</p>
+  © <span id="year"></span> InspireSphere by <strong>Azaan Zahoor</strong>
 </footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+const form=document.getElementById("contactForm");
+const status=document.getElementById("status");
+
+form.addEventListener("submit",()=>{
+  status.textContent="Sending message...";
+  status.style.color="#9ca3af";
+});
+</script>
 
 </body>
 </html>
